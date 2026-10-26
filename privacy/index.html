@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy policy: Skim</title>
+<meta name="description" content="What the Skim app stores, why, where, and how to delete it.">
+<meta name="theme-color" content="#0F172A">
+<link rel="canonical" href="https://o7py.github.io/skim-site/privacy/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Privacy policy: Skim">
+<meta property="og:description" content="What the Skim app stores, why, where, and how to delete it.">
+<meta property="og:url" content="https://o7py.github.io/skim-site/privacy/">
+<meta property="og:image" content="https://o7py.github.io/skim-site/assets/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script>document.documentElement.className="js"</script>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="top"><div class="wrap bar">
+<a class="brand" href="../"><img src="../assets/logo.svg" width="32" height="32" alt=""><span>Skim</span></a>
+<nav aria-label="Main"><a href="../#features">Features</a><a href="../#faq">FAQ</a><a href="../privacy/">Privacy</a></nav>
+</div></header>
+<main id="main"><div class="wrap narrow prose">
+<h1>Privacy policy</h1>
+<p class="small">Skim 1.0.0 · early preview. This page describes what the Skim app and its service actually do today.</p>
+
+<h2>Who we are</h2>
+<p>Skim is an independent early-preview project. It is not official IISc or Microsoft software. Contact: <a href="mailto:CONTACT_EMAIL_TO_BE_CONFIRMED">CONTACT_EMAIL_TO_BE_CONFIRMED</a>.</p>
+
+<h2>What we collect, and why</h2>
+<ul>
+<li><strong>Your Google account email and name,</strong> from Google sign-in, to identify you and show your account.</li>
+<li><strong>Your Skim activity:</strong> the courses you joined, which cards you dismissed or opened, your stars, snoozes and reminders, and your settings (quiet hours, mute, Important types). This makes the app work across your devices and is never shown to anyone else.</li>
+<li><strong>Your push token:</strong> an identifier from Expo’s push service for your phone, used only to send you reminders and change alerts. Notification text contains no personal names.</li>
+<li><strong>Course content:</strong> when a professor adds the Skim bot to a course team, Skim records the posts, edits, deletions, reactions and file changes in that team’s standard channels, and reads files’ text, to build cards. Private and shared channels are never read.</li>
+</ul>
+<p>Skim does not collect your location, contacts, or anything else from your phone. The only phone permissions asked for are notifications, exact alarms for reminders, and writing an event to your calendar when you ask for it.</p>
+
+<h2>Who can see what</h2>
+<p>Professors and course staff cannot see which cards you read, starred or dismissed, or any of your settings. There is no professor view of student activity. Joining a course needs the code posted in its team, and message author names are shown as Teams shows them.</p>
+
+<h2>Where it is stored</h2>
+<ul>
+<li>Account data, course content and your activity are stored in a database on <strong>Supabase</strong>.</li>
+<li>The Skim service runs on <strong>Google Cloud</strong> (Cloud Run, Mumbai region).</li>
+<li>Your phone also keeps a copy of your latest cards and your settings for offline use.</li>
+</ul>
+
+<h2>Third parties</h2>
+<ul>
+<li><strong>Google sign-in</strong> verifies who you are (Google’s own policy applies to that step).</li>
+<li><strong>Expo’s push service</strong> delivers notifications to your phone.</li>
+<li><strong>Language models</strong> process redacted course text to find dates and categories. Personal identifiers such as email addresses are removed before text is sent.</li>
+<li>Nothing is sold, and nothing is used for advertising. This website has no analytics, cookies or third-party requests; the APK download is served by GitHub.</li>
+</ul>
+
+<h2>How long we keep it</h2>
+<p>Your account data is kept until you delete your account. Course content is kept while the Skim bot remains in that team. If you leave a course in the app, the cards, history, stars and reminders you had for it are removed from your account.</p>
+
+<h2>Deleting your data</h2>
+<p>In the app, open Settings → Delete account and confirm by typing the word shown. This removes your subscriptions, activity, reminders, push tokens and your sign-in account at once. You can also write to the contact address above.</p>
+
+<h2>Changes</h2>
+<p>If this policy changes, the new version is published here with a new date and app version.</p>
+</div></main>
+<footer class="foot"><div class="wrap">
+<div class="foot-row"><span>Skim 1.0.0 · early preview, Android only</span>
+<span><a href="../privacy/">Privacy</a> · <a href="mailto:CONTACT_EMAIL_TO_BE_CONFIRMED">Contact</a></span></div>
+<p class="small">Not affiliated with Microsoft. Microsoft Teams is a trademark of Microsoft. Skim is not official IISc software.</p>
+</div></footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

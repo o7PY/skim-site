@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://o7py.github.io/skim-site/sitemap.xml

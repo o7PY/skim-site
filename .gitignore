@@ -1,0 +1,5 @@
+brand/
+raw-screenshots/
+.build-*
+.shot-*
+.export-check/
