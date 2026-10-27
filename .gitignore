@@ -3,3 +3,9 @@ raw-screenshots/
 .build-*
 .shot-*
 .export-check/
+.tools/
+.render/
+.sheets/
+.test-*.html
+assets/style-dark-test.css
+DESIGN.md
