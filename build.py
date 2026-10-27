@@ -103,9 +103,9 @@ def header(root):
 
 def footer(root):
     return f'''<footer class="foot"><div class="wrap">
-<div class="foot-row"><span>Skim {E(C['version'])} · early preview · Android only</span>
+<div class="foot-row"><span>Skim {E(C['version'])}</span>
 <span><a href="{root}privacy/">Privacy</a> · <a href="{E(MAILTO)}">Contact</a></span></div>
-<p class="small">Not affiliated with Microsoft; Microsoft Teams is a trademark of Microsoft. Skim is an independent project, not official IISc software.</p>
+<p class="small">Not affiliated with Microsoft; Microsoft Teams is a trademark of Microsoft. Skim is an independent project.</p>
 </div></footer>'''
 
 def home():
@@ -134,7 +134,6 @@ def home():
 <div class="story" id="story-wrap"><div class="wrap story-grid">
 <div class="story-text">
 <section class="hero chapter" data-step="0" aria-labelledby="h1">
-<p class="badge"><span class="dot"></span>Early preview · Android · testing phase</p>
 <h1 id="h1">Swipe through your semester.</h1>
 <p class="lead">Skim turns your course’s Teams posts and files into a deck of cards, with dates, reminders and alerts when a date moves.</p>
 <p class="cta"><a class="btn" href="{E(MAILTO)}">Collaborate with us {svg(ICONS['arrow'])}</a><a class="btn ghost" href="#story">See how it works</a></p>
