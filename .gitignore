@@ -9,3 +9,4 @@ raw-screenshots/
 .test-*.html
 assets/style-dark-test.css
 DESIGN.md
+__pycache__/
