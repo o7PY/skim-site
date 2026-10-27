@@ -9,7 +9,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RAW, OUT = f'{ROOT}/raw-screenshots/', f'{ROOT}/assets/shots/'
 TOP, BOT = 62, 1280
 SKIP = ('chat-open',)                                   # a long answer that read as inconsistent: not used
-RENAME = {'reminders-light': 'starred-light'}          # that file is really the Starred tab
+RENAME = {}
 
 def inpaint_band(im, y0, y1):
     px = im.load(); w, _ = im.size

@@ -51,15 +51,15 @@ STEPS = [  # screen shown while this step is active: (image name, alt)
     ('teams', 'The Teams tab: a list of your courses, each with its own colour dot.'),
     ('deck-important', 'A card for a new assignment, with Important, Assignment and Unconfirmed tags, the due date and an attached file.'),
     ('detail', 'An opened card: a date change, then actions for reminders, starring, snoozing, asking a question, and adding to the calendar.'),
-    ('reminders-dark', 'The Reminders list: each reminder with its time, its kind (automatic or recommended) and an on/off switch.'),
+    ('reminders', 'The Reminders list: each reminder with its time, its kind (automatic or recommended) and an on/off switch; two are switched off.'),
     ('chat-anchored', 'Ask the course: the question "Has this changed?" about a quiz card, answered with the new date and a source chip to open the card.'),
 ]
 def phone_html(i, eager=False):
     name, alt = STEPS[i]
-    return f'<div class="screen{" is-on" if i == 0 else ""}" data-screen="{i}">{pic(name, alt, eager=eager and i == 0, themed=name != "reminders-dark")}</div>'
+    return f'<div class="screen{" is-on" if i == 0 else ""}" data-screen="{i}">{pic(name, alt, eager=eager and i == 0)}</div>'
 def inline_phone(i):
     name, alt = STEPS[i]
-    return f'<div class="phone inline"><div class="bezel"><div class="inner">{pic(name, alt, eager=i == 0, themed=name != "reminders-dark")}</div></div></div>'
+    return f'<div class="phone inline"><div class="bezel"><div class="inner">{pic(name, alt, eager=i == 0)}</div></div></div>'
 
 def chips():
     return ''.join(f'<li class="chip c-{t[0]}">{svg(t[2])}{E(t[1])}</li>' for t in TYPES)
@@ -256,10 +256,11 @@ nav{display:flex;align-items:center;gap:20px}nav a:not(.btn){color:var(--muted);
 .pin{display:none}
 @media (min-width:860px){
  .story-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);column-gap:56px}
- .pin{display:block;position:sticky;top:calc(50vh - 340px);align-self:start;height:max-content;order:2;padding-top:0;margin-top:56px}
+ .pin{display:flex;align-items:center;justify-content:center;position:sticky;top:64px;height:calc(100vh - 64px);align-self:start;order:2}
+ .pin .phone{width:min(300px,calc((100vh - 144px) * .4844 + 16px));margin:0}
  .story-text{order:1}.inline{display:none}
- .hero{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding-top:24px}
- .chapter:not(.hero){min-height:86vh;display:flex;flex-direction:column;justify-content:center}
+ .hero,.chapter:not(.hero){min-height:calc(100vh - 64px);display:flex;flex-direction:column;justify-content:center}
+ .hero{padding-top:0;padding-bottom:0}.chapter:not(.hero){padding:0}
  .screen{position:absolute;inset:0;opacity:0;transition:opacity .25s ease}.screen.is-on{opacity:1}
  .screen picture,.screen img{width:100%;height:100%}
 }

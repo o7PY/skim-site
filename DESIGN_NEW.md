@@ -93,7 +93,7 @@ Contrast (computed): ink on bg 14.5:1 / 16.9:1; muted on paper 6.7:1 / 8.1:1; te
 Contrast per section 4; visible focus on everything; 44 px minimum touch targets; one `h1`; landmarks (`header`, `main`, `footer`); alt text that says what the screen shows; skip link; works without JavaScript (all text visible, no pinning). Lighthouse mobile 95 or more in all four categories; no third-party requests, no cookies, no analytics.
 
 ## 11. Open items for the human
-1. **Contact address:** `Pragnya@SkimForTeams.onmicrosoft.com` (given by the human). It is a Microsoft 365 address: it receives outside email only if that account has an Exchange mailbox, so **send it a test email from another account before the page goes live.**
+1. **Contact address:** `pragnyayadav22@gmail.com` (given by the human; it replaces the earlier onmicrosoft.com address, which needs an Exchange mailbox to receive outside mail).
 2. **Web address:** GitHub Pages' default address (`o7py.github.io/skim-site`) for now; a custom domain later if wanted.
 3. **Approve the privacy wording** (section 5 of the page and `/privacy/`): three claims come from the specs, not the code (text sent to language models is redacted; course content is kept while the bot stays in the team; leaving a course removes your data for it).
 4. **Collaborators and Google sign-in:** the Google consent screen is still in *Testing*, so each collaborator must be added as a test user (up to 100) until it is moved to production. This replaces T9/T10 for the public-download plan.
