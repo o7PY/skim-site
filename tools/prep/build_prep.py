@@ -69,6 +69,15 @@ FLOW = ['<b>A professor posts</b> in a standard channel of the course team. The 
 
 PITCH = S.QA[0]['a']
 
+# The decisions worth defending in an interview (47 of 277). Pick by id; for ids that appear in both the
+# spec table and the log, only the longer entry is flagged.
+IMPORTANT = '''D-002 D-003 D-006 D-008 D-010 D-011 D-017
+P2-D-105 P2-D-109 P2-D-110 P2-D-124 P2-D-132
+P3-D-002 P3-D-003 P3-D-004 P3-D-005 P3-D-008 P3-D-010 P3-D-011 P3-D-012 P3-D-019 P3-D-020 P3-D-034 P3-D-036
+P4-D-103 P4-D-105 P4-D-107 P4-D-119 P4-D-120 P4-D-121 P4-D-122 P4-D-127 P4-D-131 P4-D-134 P4-D-136 P4-D-150 P4-D-177
+P5-D-6 P5-D-13 P5-D-14 P5-D-111 P5-D-117
+P6A-D-001 P6A-D-003 P6A-D-005 P6A-D-006 P6A-D-012'''.split()
+
 QTRY = {
  'teams': 'Notice the colour dot per course. Which table and column does that come from? (subscriptions)',
  'deck-change': 'Find the old and new date. Why can a reminder follow it without being rewritten?',
@@ -84,6 +93,15 @@ def main():
     for d in dec:
         for k in ('text', 'why', 'title'):
             d[k] = parse.scrub(d[k])
+    best = {}
+    for d in dec:
+        if d['id'] in IMPORTANT and len(d['text']) + len(d['why']) >= best.get(d['id'], (0, None))[0]:
+            best[d['id']] = (len(d['text']) + len(d['why']), id(d))
+    missing = [i for i in IMPORTANT if i not in best]
+    if missing:
+        sys.exit('important ids not found: %s' % missing)
+    for d in dec:
+        d['imp'] = d['id'] in best and best[d['id']][1] == id(d)
     routes = [dict(r, d=ROUTE_DOC.get((r['m'], r['p']), '')) for r in parse.parse_routes()]
     for r in routes:
         if not r['d']:

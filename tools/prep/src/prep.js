@@ -217,18 +217,18 @@ R.internals=function(el){
 };
 /* ---------- DECISIONS ---------- */
 var DEC_Q='';
-function openDecision(id){DEC_Q=id;go('decisions',function(){var i=$('#dq');if(i){i.value=id;i.dispatchEvent(new Event('input'))}})}
+function openDecision(id){DEC_Q=id;go('decisions',function(){var i=$('#dq');if(i){$('#dp').value='All';i.value=id;i.dispatchEvent(new Event('input'))}})}
 R.decisions=function(el){
-  var favs=store('favs')||{};var phases=['All'].concat(D.decisions.map(function(d){return d.phase}).filter(function(v,i,a){return a.indexOf(v)===i}).sort());
+  var favs=store('favs')||{};var phases=['All','Important'].concat(D.decisions.map(function(d){return d.phase}).filter(function(v,i,a){return a.indexOf(v)===i}).sort());
   var tags=['all'].concat(Object.keys(D.decisions.reduce(function(o,d){d.tags.forEach(function(t){o[t]=1});return o},{})).sort());
-  el.innerHTML='<h2>Decision explorer</h2><p class="lead">'+D.decisions.length+' decisions with the reason for each. Search, filter, and star the ones you want to be able to defend.</p><div class="row"><input type="search" id="dq" placeholder="Search text, id or title..." style="max-width:360px" aria-label="Search decisions"><select id="dp" style="max-width:150px" aria-label="Phase">'+phases.map(function(p){return '<option>'+p+'</option>'}).join('')+'</select><select id="dt" style="max-width:170px" aria-label="Tag">'+tags.map(function(p){return '<option>'+p+'</option>'}).join('')+'</select><button class="chip" id="df">&#9733; starred only</button><span class="small" id="dc"></span></div><div class="grid" id="dl" style="margin-top:12px"></div><div class="row" style="margin-top:12px"><button class="btn ghost" id="dm">Show more</button></div>';
+  el.innerHTML='<h2>Decision explorer</h2><p class="lead">'+D.decisions.length+' decisions with the reason for each. Start with the <b>Important</b> filter: the '+D.decisions.filter(function(d){return d.imp}).length+' an interviewer is likely to care about. Use the phase filters to dig deeper.</p><div class="row"><input type="search" id="dq" placeholder="Search text, id or title..." style="max-width:360px" aria-label="Search decisions"><select id="dp" style="max-width:150px" aria-label="Phase">'+phases.map(function(p){return '<option'+(p==='Important'?' selected':'')+'>'+p+'</option>'}).join('')+'</select><select id="dt" style="max-width:170px" aria-label="Tag">'+tags.map(function(p){return '<option>'+p+'</option>'}).join('')+'</select><button class="chip" id="df">&#9733; starred only</button><span class="small" id="dc"></span></div><div class="grid" id="dl" style="margin-top:12px"></div><div class="row" style="margin-top:12px"><button class="btn ghost" id="dm">Show more</button></div>';
   var lim=40,onlyFav=false;
-  function filt(){var q=$('#dq').value.toLowerCase(),p=$('#dp').value,t=$('#dt').value;return D.decisions.filter(function(d){return (p==='All'||d.phase===p)&&(t==='all'||d.tags.indexOf(t)>-1)&&(!onlyFav||favs[d.id])&&(!q||(d.id+' '+d.title+' '+d.text+' '+d.why).toLowerCase().indexOf(q)>-1)})}
+  function filt(){var q=$('#dq').value.toLowerCase(),p=$('#dp').value,t=$('#dt').value;return D.decisions.filter(function(d){return (p==='All'||(p==='Important'?d.imp:d.phase===p))&&(t==='all'||d.tags.indexOf(t)>-1)&&(!onlyFav||favs[d.id])&&(!q||(d.id+' '+d.title+' '+d.text+' '+d.why).toLowerCase().indexOf(q)>-1)})}
   function draw(){var r=filt();$('#dc').textContent=r.length+' shown';$('#dl').innerHTML=r.slice(0,lim).map(function(d){return '<article class="card dec"><div class="meta"><span class="tag">'+esc(d.id)+'</span><span class="tag">phase '+esc(d.phase)+'</span><span class="tag">'+esc(d.date)+'</span>'+d.tags.map(function(t){return '<span class="tag">'+esc(t)+'</span>'}).join('')+'<button class="star'+(favs[d.id]?' on':'')+'" data-s="'+esc(d.id)+'" aria-label="Star" aria-pressed="'+!!favs[d.id]+'" style="margin-left:auto">&#9733;</button></div><h4>'+esc(d.title)+'</h4><p>'+esc(d.text)+'</p>'+(d.why?'<p class="why">'+esc(d.why)+'</p>':'')+'</article>'}).join('');$('#dm').classList.toggle('hide',r.length<=lim);
     $$('[data-s]').forEach(function(b){b.onclick=function(){var i=b.dataset.s;if(favs[i])delete favs[i];else favs[i]=1;store('favs',favs);b.classList.toggle('on',!!favs[i]);b.setAttribute('aria-pressed',!!favs[i])}})}
   ['dq','dp','dt'].forEach(function(i){$('#'+i).oninput=$('#'+i).onchange=function(){lim=40;draw()}});$('#dm').onclick=function(){lim+=40;draw()};
   $('#df').onclick=function(){onlyFav=!onlyFav;this.classList.toggle('on',onlyFav);lim=40;draw()};
-  if(DEC_Q){$('#dq').value=DEC_Q;DEC_Q=''}draw();
+  if(DEC_Q){$('#dp').value='All';$('#dq').value=DEC_Q;DEC_Q=''}draw();
 };
 /* ---------- STORIES ---------- */
 R.stories=function(el){
