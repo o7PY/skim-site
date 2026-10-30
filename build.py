@@ -97,7 +97,7 @@ def page(title, desc, path, body):
 def header(root):
     return f'''<header class="top"><div class="wrap bar">
 <a class="brand" href="{root}" aria-label="Skim, home"><img src="{root}assets/logo.svg" width="32" height="32" alt=""><span>Skim</span></a>
-<nav aria-label="Main"><a href="{root}#story">How it works</a><a href="{root}#collaborate">Who it’s for</a><a href="{root}#privacy">Privacy</a>
+<nav aria-label="Main"><a href="{root}#story">How it works</a><a href="{root}#demo">App demo</a><a href="{root}#collaborate">Who it’s for</a><a href="{root}#privacy">Privacy</a>
 <a class="btn sm" href="{E(MAILTO)}">Collaborate</a></nav>
 </div></header>'''
 
@@ -129,6 +129,7 @@ def home():
 <li class="tile reveal"><span class="fi">{svg(ICONS['moon'])}</span><h3>Quiet hours and mute</h3><p>Silence a course, set quiet hours, or let only the urgent through.</p></li>
 <li class="tile reveal"><span class="fi">{svg(ICONS['wifi'])}</span><h3>Works offline</h3><p>Your latest cards stay readable without a connection.</p></li>
 </ul>'''
+    codes = ''.join(f'<li class="code">{E(x)}</li>' for x in C['demo_codes'])
     body = f'''{header('./')}
 <main id="main">
 <div class="story" id="story-wrap"><div class="wrap story-grid">
@@ -146,6 +147,19 @@ def home():
 </div></div>
 
 <section class="band"><div class="wrap"><h2 class="center">And the rest of it</h2>{tiles}</div></section>
+
+<section id="demo" class="sec"><div class="wrap narrow">
+<h2 class="center">App demo</h2>
+<p class="sub center">Try Skim on an Android phone. This is an early test build, so Android asks you to allow installing it from your browser.</p>
+<p class="cta center"><a class="btn" href="{E(C['apk_url'])}" download>{svg(ICONS['arrow'])}Download the app demo</a></p>
+<p class="small center">{E(C['apk_label'])}</p>
+<ol class="steps">
+<li><strong>Install it.</strong> Open the downloaded file and allow “install unknown apps” if your phone asks.</li>
+<li><strong>Sign in with Google.</strong> The demo is limited to testers we have added; write to us if sign-in is refused.</li>
+<li><strong>Join a team.</strong> Tap Join and type one of these codes:</li>
+</ol>
+<ul class="codes">{codes}</ul>
+</div></section>
 
 <section id="collaborate" class="sec"><div class="wrap">
 <h2 class="center">Let’s test it with your course.</h2>
@@ -272,6 +286,9 @@ nav{display:flex;align-items:center;gap:20px}nav a:not(.btn){color:var(--muted);
 .fi{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:var(--teal-soft);color:var(--teal);margin-bottom:14px}
 .sub{max-width:44em;margin:16px auto 0;color:var(--muted)}
 .cards3{list-style:none;margin:40px 0 32px;padding:0;display:grid;gap:16px}@media (min-width:860px){.cards3{grid-template-columns:repeat(3,1fr)}}
+.steps{margin:24px auto;padding-left:22px;max-width:560px;display:grid;gap:10px}.steps li::marker{color:var(--teal);font-weight:700}
+.codes{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.code{font:700 22px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.14em;padding:12px 20px;border-radius:14px;background:var(--teal-soft);color:var(--teal);border:1px solid var(--hair);user-select:all}
 .card{background:var(--paper);border:1px solid var(--hair);border-radius:24px;padding:28px}.card p{margin:8px 0 0;color:var(--muted)}
 .priv{list-style:none;padding:0;margin:24px 0;display:grid;gap:16px}.priv li{display:flex;gap:14px;align-items:flex-start}.priv .ic{margin-top:4px;color:var(--teal)}
 .foot{padding:36px 0 48px;color:var(--muted)}.foot-row{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}

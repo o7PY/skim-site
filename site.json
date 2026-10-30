@@ -1,5 +1,12 @@
 {
   "version": "1.0.0",
   "base_url": "https://o7py.github.io/skim-site",
-  "contact_email": "pragnyayadav22@gmail.com"
+  "contact_email": "pragnyayadav22@gmail.com",
+  "apk_url": "https://expo.dev/artifacts/eas/-9fNpZJ-MtO5vLcH2XcjUDqn3R7GgnX_oJbLGCouCDk.apk",
+  "apk_label": "Skim 1.0.0 (build 4), Android, about 107 MB",
+  "demo_codes": [
+    "R6BVE4",
+    "YX4V6W",
+    "HGURC3"
+  ]
 }
