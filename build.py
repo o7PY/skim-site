@@ -155,7 +155,7 @@ def home():
 <p class="small center">{E(C['apk_label'])}</p>
 <ol class="steps">
 <li><strong>Install it.</strong> Open the downloaded file and allow “install unknown apps” if your phone asks.</li>
-<li><strong>Sign in with Google.</strong> The demo is limited to testers we have added; write to us if sign-in is refused.</li>
+<li><strong>Sign in with Google.</strong></li>
 <li><strong>Join a team.</strong> Tap Join and type one of these codes:</li>
 </ol>
 <ul class="codes">{codes}</ul>
